@@ -6,7 +6,7 @@ const ObjectID = require('mongodb').ObjectID
 
 const app = express()
 app.use(express.json())
-
+app.use(cors())
 
 const MongoClient = require('mongodb').MongoClient;
 const uri = `mongodb+srv://${process.env.DB_NAME}:${process.env.DB_PASS}@cluster0.kpq4d.mongodb.net/volunteer-network?retryWrites=true&w=majority`;
