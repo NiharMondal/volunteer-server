@@ -39,12 +39,11 @@ client.connect(err => {
   });
 
   app.get('/my-event', (req, res) => {
-    volunteerCollection.find({email: req.body.email})
+    volunteerCollection.find(req.body.email)
       .toArray((err, myDocuments) => {
        res.send(myDocuments)
      })
   });
-
 
   app.post('/add-volunteer', (req, res) => {
     volunteerCollection.insertOne(req.body.info)
@@ -69,9 +68,8 @@ client.connect(err => {
   });
 
   app.delete('/cancel-event', (req, res) => {
-    volunteerCollection.deleteOne({ _id: ObjectID(req.headers.id) })
+    volunteerCollection.deleteOne({ _id: ObjectID(req.body.id) })
       .then(result => {
-      
         res.send(result.deletedCount > 0)
       })
   });
