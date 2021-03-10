@@ -39,7 +39,7 @@ client.connect(err => {
   });
 
   app.get('/my-event', (req, res) => {
-    volunteerCollection.find(req.body.email)
+    volunteerCollection.find({email:req.body.email})
       .toArray((err, myDocuments) => {
        res.send(myDocuments)
      })
