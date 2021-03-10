@@ -38,12 +38,12 @@ client.connect(err => {
       })
   });
 
-  app.get('/my-event', (req, res) => {
-    volunteerCollection.find({email:req.body.email})
-      .toArray((err, myDocuments) => {
-       res.send(myDocuments)
-     })
-  });
+  app.get('/my-events', (req, res) => {
+    volunteerCollection.find({ email: req.headers.email })
+      .toArray((err, documents) => {
+      res.send(documents)
+    })
+  })
 
   app.post('/add-volunteer', (req, res) => {
     volunteerCollection.insertOne(req.body.info)
